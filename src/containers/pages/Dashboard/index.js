@@ -1,16 +1,35 @@
 import { Header, Message, RecipeItem } from "../../../components";
+import { useState } from "react";
+import { DetailRecipe } from "../../organism";
 
 const Dashboard = () => {
+    const [items,setItems] = useState([]);
+    const [detail,setDetail] = useState();
+
+    const callback = (items) => {
+        setItems(items)
+    }
+
+    const getDetail = (detail) => {
+        setDetail(detail)
+    }
+
     return(
-        <div className="h-screen w-screen bg-gradient-to-r from-cyan-500 to-blue-500 pt-28">
-            <div className="bg-gray-100 rounded-md border-2 w-3/4 mx-auto h-5/6 overflow-hidden">
-                <Header/>
-                <div className="flex h-full">
-                    <div className="w-2/5 bg-white rounded-sm h-full">
-                        <RecipeItem/>
+        <div className="w-full min-h-screen bg-gradient-to-r from-orange-200 to-orange-400 py-28 px-20">
+            <div className="bg-gray-100 rounded-md border-2 w-full h-352 min-h-screen mx-auto flex flex-col">
+                <Header parentCallback={callback}/>
+                <div className="flex flex-1 overflow-hidden">
+                    <div className="w-2/5 bg-white rounded-sm py-4 overflow-y-auto">
+                        {
+                            items.map(item => {
+                               return <RecipeItem parentCallback={getDetail} image={item.image_url} title={item.title} id={item.recipe_id} key={item.recipe_id}/>
+                            })
+                        }
                     </div>
-                    <div className="w-3/5">
-                        <Message content="Start by searching for a recipe or an ingredient. Have fun!"/>
+                    <div className="w-3/ overflow-y-auto">
+                        {
+                            detail ? <DetailRecipe recipe={detail}/> : <Message content="Start by searching for a recipe or an ingredient. Have fun!"/>
+                        }
                     </div>
                 </div>
             </div>
