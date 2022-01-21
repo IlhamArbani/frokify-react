@@ -13,15 +13,17 @@ const RecipeItem = (props) => {
     }
 
     return (
-        <div className="flex w-full justify-center mb-4">
-            <div className='flex w-4/5'>
-                <img className="rounded-full h-14 w-14 mr-3" src={`${props.image}`} alt=''/>
-                <div className='truncate'>
-                    <h1 className='text-orange-300 truncate'>{props.title}</h1>
-                    <button className='text-sm text-gray-400' onClick={() => getDetail(props.id)}>Detail Recepies</button>
+        <button onClick={() => getDetail(props.id)}>
+            <div className="flex w-full justify-center hover:bg-orange-200 py-3 transition-colors ease-out">
+                <div className='flex w-4/5'>
+                    <img className="rounded-full h-14 w-14 mr-3" src={`${props.image}`} alt=''/>
+                    <div className='truncate'>
+                        <h1 className='text-orange-300 truncate text-left'>{props.title}</h1>
+                        <p className='text-sm text-gray-400 text-left'>{props.publisher}</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </button>
     )
 }
 

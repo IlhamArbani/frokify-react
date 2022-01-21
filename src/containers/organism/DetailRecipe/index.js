@@ -1,6 +1,29 @@
+import { useEffect,useState } from "react";
 import { ServingCounter } from "../../../components";
+import {useDispatch,useSelector} from 'react-redux'
 
 const DetailRecipe = (props) => {
+    const dispatch = useDispatch()
+    const data = useSelector(state => state.bookmarked);
+    const [bookmarkItemId,setBookmarkItemId] = useState();
+
+    const marked = () => {
+        console.log(props.recipe)
+        dispatch({type:'MARKED',item:props.recipe})
+        // setBookmarkItem(data)
+        console.log('change initialState : ');
+        console.log(data);
+    }
+
+    useEffect(() => {
+        setBookmarkItemId(!!data.find(e => {
+            return e.recipe_id === props.recipe.recipe_id
+        }))
+        
+
+
+    })
+
     return(
         <div className="h-full w-full">
             <div className="w-full h-80 bg-no-repeat bg-cover relative" style={{backgroundImage : `url(${props.recipe.image_url})`,}}>
@@ -17,13 +40,17 @@ const DetailRecipe = (props) => {
             <div className="w-full bg-white flex justify-between py-12 items-center px-12">
                 <p>60 Minutes</p>
                 <ServingCounter/>
-                <button className="h-12 w-12 rounded-full bg-orange-300"></button>
+                {
+                    bookmarkItemId?
+                    <button onClick={marked} className='h-12 w-12 rounded-full  bg-blue-400'></button> :
+                    <button onClick={marked} className='h-12 w-12 rounded-full  bg-orange-400'></button>
+                }
             </div>
             <div className="w-full px-6 flex flex-col items-center py-4">
                 <h1 className="text-orange-300 font-bold text-xl text-center mb-6">Recipe Ingredients</h1>
                 <div className="grid grid-rows-8 grid-cols-2 grid-flow-row gap-2">
-                        {props.recipe.ingredients.map(item => {
-                            return <p className="text-orange-500">{item}</p>
+                        {props.recipe.ingredients.map((item,index) => {
+                            return <p className="text-orange-500" key={index}>{item}</p>
                         })}
                 </div>
             </div>
