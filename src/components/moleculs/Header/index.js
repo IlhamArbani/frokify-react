@@ -11,7 +11,7 @@ const Header = (props) => {
             <SearchRecepi parentCallback={props.parentCallback}/>
             <div className="flex">
                 <AddRecipe Style="mr-12 text-gray-500 text-lg"/>
-                <Bookmarks Style="mr-12 text-gray-500 text-lg"/>
+                <Bookmarks Style="mr-12 text-gray-500 text-lg" getDetail={props.getDetail}/>
             </div>
         </div>
     )
