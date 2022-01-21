@@ -19,9 +19,6 @@ const DetailRecipe = (props) => {
         setBookmarkItemId(!!data.find(e => {
             return e.recipe_id === props.recipe.recipe_id
         }))
-        
-
-
     })
 
     return(
