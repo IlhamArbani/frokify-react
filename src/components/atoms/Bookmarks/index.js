@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { RecipeItem } from "..";
 
 const Bookmarks = (props) => {
-    const items = useSelector(state => state.bookmarked)
+    const items = useSelector(state => state.dashboardReducer.bookmarked)
     const [shownBookmark,setShownBookmark] = useState(false);
 
     const showBookmark = () =>  {

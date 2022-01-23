@@ -1,18 +1,29 @@
 import { useEffect,useState } from "react";
 import { ServingCounter } from "../../../components";
 import {useDispatch,useSelector} from 'react-redux'
+import { saveBookmark, unmark } from "../../../redux/action";
 
 const DetailRecipe = (props) => {
     const dispatch = useDispatch()
-    const data = useSelector(state => state.bookmarked);
+    const data = useSelector(state => state.dashboardReducer.bookmarked);
     const [bookmarkItemId,setBookmarkItemId] = useState();
 
     const marked = () => {
         console.log(props.recipe)
-        dispatch({type:'MARKED',item:props.recipe})
+        dispatch(saveBookmark(props.recipe))
         // setBookmarkItem(data)
         console.log('change initialState : ');
         console.log(data);
+    }
+
+    const unmarked = (id) => {
+        const tmp = data.filter(item => {
+            if(item.recipe_id !== id){
+                return item
+            }
+        })
+        console.log(tmp)
+        dispatch(unmark(tmp))
     }
 
     useEffect(() => {
@@ -39,7 +50,7 @@ const DetailRecipe = (props) => {
                 <ServingCounter/>
                 {
                     bookmarkItemId?
-                    <button onClick={marked} className='h-12 w-12 rounded-full  bg-blue-400'></button> :
+                    <button onClick={()=>unmarked(props.recipe.recipe_id)} className='h-12 w-12 rounded-full  bg-blue-400'></button> :
                     <button onClick={marked} className='h-12 w-12 rounded-full  bg-orange-400'></button>
                 }
             </div>
