@@ -1,6 +1,7 @@
 const initialState = {
     bookmarked:[],
-    recipe:[]
+    recipe:[],
+    detailRecipe:''
 }
 
 export const dashboardReducer = (state = initialState,action) => {
@@ -26,6 +27,13 @@ export const dashboardReducer = (state = initialState,action) => {
             ...state,
             bookmarked:[...action.value]
         };
+    }
+
+    if(action.type === "SET_DETAIL_RECIPE"){
+        return{
+            ...state,
+            detailRecipe:action.value
+        }
     }
 
     return state

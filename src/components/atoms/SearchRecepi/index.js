@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { searchRecipe } from "../../../redux/action";
+import { setLoading } from "../../../redux/action/global";
 
 
 const SearchRecepi = (props) => {
@@ -8,6 +9,7 @@ const SearchRecepi = (props) => {
     const dispatch = useDispatch()
 
     const getRecepi = () => {
+        dispatch(setLoading(true));
         dispatch(searchRecipe(inputRecepi.current.value));
     }
 
