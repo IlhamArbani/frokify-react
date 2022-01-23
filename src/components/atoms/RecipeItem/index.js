@@ -1,15 +1,12 @@
 import Axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { getDetailRecipe, setLoadingDetail } from '../../../redux/action';
 
 const RecipeItem = (props) => {
+    const dispatch = useDispatch();
     const getDetail  = () => {
-        Axios.get(`https://forkify-api.herokuapp.com/api/get?rId=${props.id}`)
-        .then(e => {
-            console.log(e)
-            props.parentCallback(e.data.recipe)
-        })
-        .catch(e => {
-
-        })
+        dispatch(getDetailRecipe(props.id))
+        dispatch(setLoadingDetail(true));
     }
 
     return (

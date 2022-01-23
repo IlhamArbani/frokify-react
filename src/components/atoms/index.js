@@ -4,6 +4,7 @@ import Bookmarks from "./Bookmarks";
 import RecipeItem from "./RecipeItem";
 import Message from "./Message";
 import ServingCounter from "./ServingCounter";
+import Loading from './Loading';
 
 export{
     SearchRecepi,
@@ -11,5 +12,6 @@ export{
     Bookmarks,
     RecipeItem,
     Message,
-    ServingCounter
+    ServingCounter,
+    Loading
 }
