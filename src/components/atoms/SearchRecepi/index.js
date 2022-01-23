@@ -1,18 +1,14 @@
 import { useRef } from "react";
-import Axios from 'axios';
+import { useDispatch } from "react-redux";
+import { searchRecipe } from "../../../redux/action";
+
 
 const SearchRecepi = (props) => {
     const inputRecepi = useRef();
+    const dispatch = useDispatch()
 
     const getRecepi = () => {
-        Axios.get(`https://forkify-api.herokuapp.com/api/search?q=${inputRecepi.current.value}`)
-        .then(e => {
-            console.log(e);
-            props.parentCallback(e.data.recipes);
-        })
-        .catch(e => {
-            console.log(e);
-        })
+        dispatch(searchRecipe(inputRecepi.current.value));
     }
 
     return (
