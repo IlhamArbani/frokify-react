@@ -9,6 +9,12 @@ module.exports = {
       },
       height:{
         '352':'88rem'
+      },
+      colors:{
+        'backdrop':'rgba(0,0,0,.4)'
+      },
+      margin:{
+        '1/2':'50%'
       }
     },
   },

@@ -31,7 +31,7 @@ const DetailRecipe = () => {
         setBookmarkItemId(!!data.find(e => {
             return e.recipe_id === detailRecipe.recipe_id
         }))
-    })
+    },[data])
 
     return(
         <div className="h-full w-full">

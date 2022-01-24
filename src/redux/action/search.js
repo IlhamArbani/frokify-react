@@ -2,6 +2,7 @@ import Axios from 'axios';
 import { ActionTypes, Api } from '../constant';
 
 export const searchRecipe = (input) => (dispatch) => {
+    dispatch({type:"SET_LOADING",value:true});
     Axios.get(`${Api.url}/search?q=${input}`)
         .then(e => {
             console.log(e);
@@ -16,6 +17,7 @@ export const searchRecipe = (input) => (dispatch) => {
 }
 
 export const getDetailRecipe = (id) => (dispatch) => {
+    dispatch({type:"SET_LOADING_DETAIL",value:true});
     Axios.get(`${Api.url}/get?rId=${id}`)
         .then(e => {
             console.log(e)

@@ -1,11 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { getDetailRecipe, setLoadingDetail } from '../../../redux/action';
+import { getDetailRecipe } from '../../../redux/action';
 
 const RecipeItem = (props) => {
     const dispatch = useDispatch();
     const getDetail  = () => {
         dispatch(getDetailRecipe(props.id))
-        dispatch(setLoadingDetail(true));
     }
 
     return (
