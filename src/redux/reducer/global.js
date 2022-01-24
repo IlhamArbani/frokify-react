@@ -1,6 +1,7 @@
 const initialState = {
     loading:false,
-    detailLoading:false
+    detailLoading:false,
+    showModalAddRecipe:false
 }
 
 export const globalReducer = (state=initialState,action) => {
@@ -16,6 +17,13 @@ export const globalReducer = (state=initialState,action) => {
         return {
             ...state,
             detailLoading : action.value
+        }
+    }
+
+    if(action.type === "SET_MODAL_ADD_RECIPE"){
+        return {
+            ...state,
+            showModalAddRecipe : action.value
         }
     }
 

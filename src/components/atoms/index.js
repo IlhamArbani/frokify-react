@@ -5,6 +5,7 @@ import RecipeItem from "./RecipeItem";
 import Message from "./Message";
 import ServingCounter from "./ServingCounter";
 import Loading from './Loading';
+import Input from "./Input";
 
 export{
     SearchRecepi,
@@ -13,5 +14,6 @@ export{
     RecipeItem,
     Message,
     ServingCounter,
-    Loading
+    Loading,
+    Input
 }
