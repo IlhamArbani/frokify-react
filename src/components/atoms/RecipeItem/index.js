@@ -1,4 +1,3 @@
-import Axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { getDetailRecipe, setLoadingDetail } from '../../../redux/action';
 
