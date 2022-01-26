@@ -1,7 +1,8 @@
 const initialState = {
     bookmarked:[],
     recipe:[],
-    detailRecipe:''
+    detailRecipe:'',
+    myRecipe:[]
 }
 
 export const dashboardReducer = (state = initialState,action) => {
@@ -36,5 +37,12 @@ export const dashboardReducer = (state = initialState,action) => {
         }
     }
 
+    if(action.type === "ADD_RECIPE"){
+        return{
+            ...state,
+            myRecipe:[...state.myRecipe,action.value]
+        }
+    }
+    
     return state
 }

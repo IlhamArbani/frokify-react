@@ -5,3 +5,7 @@ export const saveBookmark = (value) => {
 export const unmark = (value) => {
     return {type:'UNMARKED',value}
 }
+
+export const addRecipe = (value) => {
+    return {type:'ADD_RECIPE',value}
+}
