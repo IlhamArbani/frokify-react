@@ -34,8 +34,8 @@ const Dashboard = () => {
     return(
         <div className="w-full min-h-screen bg-gradient-to-r from-orange-200 to-orange-400 py-28 px-20">
             {
-                showModalAddRecipe && <AddRecipeForm/>
-                // showModalAddRecipe && <AddRecipeFormTest/>
+                // showModalAddRecipe && <AddRecipeForm/>
+                showModalAddRecipe && <AddRecipeFormTest/>
             }
             <div className="bg-gray-100 rounded-md shadow-md w-full h-352 min-h-screen mx-auto flex flex-col">
                 <Header />

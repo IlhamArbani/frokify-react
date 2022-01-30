@@ -5,5 +5,5 @@ import AddRecipeFormTest from './AddRecipeFormTest';
 export {
     Header,
     AddRecipeForm,
-    AddRecipeFormTest
+    AddRecipeFormTest,
 }
